@@ -15,18 +15,17 @@ public class CandidateDAO {
 		//prepared statement
 		//pst set values
 		//pst.executeUpdate()
-		String query= "insert into CANDIDATE_TBL values(?,?,?,?,?,?,?)";
+		String query= "insert into CANDIDATE_TBL values(?,?,?,?,?,?)";
 		PreparedStatement pst;
 		try {
 			pst=DBUtil.getDBConn().prepareStatement(query);
 			
-			pst.setString(1, candidateBean.getId());
-			pst.setString(2, candidateBean.getName());
-			pst.setInt(3,candidateBean.getM1());
-			pst.setInt(4,candidateBean.getM2());
-			pst.setInt(5,candidateBean.getM3());
-			pst.setString(6, candidateBean.getResult());
-			pst.setString(7, candidateBean.getGrade());
+			pst.setString(1, candidateBean.getName());
+			pst.setInt(2,candidateBean.getM1());
+			pst.setInt(3,candidateBean.getM2());
+			pst.setInt(4,candidateBean.getM3());
+			pst.setString(5, candidateBean.getResult());
+			pst.setString(6, candidateBean.getGrade());
 
 			int flag=pst.executeUpdate();
 			return (flag>0?"SUCCESS":"FAIL");
@@ -36,7 +35,7 @@ public class CandidateDAO {
 			System.out.println("FAIL");
 			
 		}
-		return "";
+		return "FAIL";
 	}// End AddCandidate
 	
 	public ArrayList<CandidateBean>getByResult(String criteria){
